@@ -1,0 +1,23 @@
+.container {
+	width:600px;
+}
+
+td.openlink {
+	min-width: 30px; 
+}
+
+
+
+a.albumurl-true {
+	display: block;
+    padding: 22px 0 0 0;
+    overflow: hidden;
+    background-image: url(../img/spotify.png);
+    background-repeat: no-repeat;
+    height: 0px !important;
+    height /**/:22px;
+}
+
+
+
+

@@ -1,0 +1,68 @@
+<!doctype html>
+<html ng-app>
+	<head>
+		 <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+		 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.5/angular.min.js"></script>
+		  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.5/angular-resource.min.js"></script>
+		 <script src="notify.js"></script>
+		 <link rel="stylesheet" href="css/bootstrap.css">
+		 <link rel="stylesheet" href="css/notify.css">
+	</head>
+
+	<body>
+	<!--
+		<div>
+		<input type="text" ng-model="yourName" placeholder="Enter a name here">
+			<p>Hello {{yourName}}</p>
+		
+		</div>-->	
+		
+		<div class="container" ng-controller="NotifyCtrl" ng-init="loadData()">
+		<h1>Notify</h1>	
+		<div id="newItems" type="section">			
+			<form ng-submit="addAlbum()" class="form-inline">
+				<input id="inputArtist" type="text" ng-model="inputArtist"  size="30" placeholder="Artist" required="required">
+				<input type="text" ng-model="inputAlbumtitle"  size="30" placeholder="Album title" required="required">
+				<input class="btn" type="submit" value="add">
+			</form>
+		</div>	
+		
+		<div ng-show="albums.length == 0" type="section">
+			<i>Please add an album first...</i>
+		</div>
+		
+		<div id="albumtable" type="section">
+			<table class="table table-striped">
+				<!--<tr>
+					<th></th>
+					<th>Artist</th>
+					<th>Album</th>
+					<th>Open in Spotify</th>
+
+				</tr>-->
+				<tr ng-repeat="album in albums">
+					<td><a class="btn" href="#" ng-click="delete($index)"><i class="icon-trash"></i></a></td>
+					<td>{{album.artist}}</td>
+					<td>{{album.albumtitle}}</td>
+					<!--<td><span>{{album.available}}</span><td>-->
+					<td class="openlink"><a class="albumurl-{{album.available}}" ng-href="{{album.url}}"></a></td>
+				</tr>
+			</table>
+		</div>
+		
+		
+		<div type="section" >
+			<a class="btn" href="" ng-click="refresh()"><i class="icon-refresh"></i></a> 
+			<!--<a href="" ng-click="save()">Save to local storage</a> 
+			<a href="" ng-click="load()">Load from local storage</a> -->
+		</div>
+		
+		
+			
+			
+			
+		</div>
+	
+	</body>
+
+</html>
