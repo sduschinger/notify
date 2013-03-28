@@ -32,7 +32,7 @@ function NotifyCtrl($scope) {
 		$scope.refresh();
 		$('#inputArtist').focus();
 	}
-	
+  	
 	$scope.save = function() {
 		localStorage.notifyAlbums = JSON.stringify($scope.albums);
 	}
@@ -41,6 +41,15 @@ function NotifyCtrl($scope) {
 		$scope.albums = JSON.parse(localStorage.notifyAlbums);
 		$scope.refresh();
 	}
+  
+  $scope.saveMongo = function() {
+    
+    $.ajax('http://localhost:8080/albums', {
+      data : JSON.stringify($scope.albums),
+      contentType : 'application/json',
+      type : 'POST'
+      });
+  }
 	
 	$scope.delete = function(idx) {
 		$scope.albums.splice(idx,1);
