@@ -24,10 +24,8 @@ function StorageObject(user, albums) {
 }
 
 function NotifyCtrl($scope) {
-	$scope.currentuser = new User("duschsba", "sebastian.duschinger@gmail.com");
-	/*$scope.albums = [new NotifyAlbum("Bonobo", "Northern Borders"),
-		new NotifyAlbum("The Strokes", "Comedown Machine"),
-	];*/
+	$scope.currentuser = new User("duschsba-test", "sebastian.duschinger@gmail.com");
+	$scope.albums = [];
 		
 	$scope.loadData = function() {
 		console.log("Current user: " + $scope.currentuser.userid);
