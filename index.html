@@ -27,7 +27,12 @@
 				<input class="btn" type="submit" value="add">
 			</form>
 		</div>	
-		<div ng-show="albums.length == 0" type="section">
+    
+    <div ng-show="loading == true" type="section">
+      <img src="img/ajax-loader.gif">
+    </div>
+    
+		<div ng-show="albums.length == 0 && loading == false" type="section">
 			<i>Please add an album first...</i>
 		</div>
 		

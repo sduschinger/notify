@@ -26,6 +26,7 @@ function StorageObject(user, albums) {
 function NotifyCtrl($scope) {
 	$scope.currentuser = new User("duschsba-test", "sebastian.duschinger@gmail.com");
 	$scope.albums = [];
+  $scope.loading = false;
 		
 	$scope.loadData = function() {
 		console.log("Current user: " + $scope.currentuser.userid);
@@ -66,16 +67,23 @@ function NotifyCtrl($scope) {
       })  
   }
   
-    $scope.loadRemote = function() {
+$scope.loadRemote = function() {
+    $scope.loading = true;
 	 $.getJSON('http://localhost:8080/user/' + $scope.currentuser.userid, function(data) {
 		//$scope.albums = data[0].albums;
-		$scope.albums = [];
-		$.each(data[0].albums, function(idx){
-			var d = data[0].albums[idx];
-			var newAlbum = new NotifyAlbum(d.artist, d.albumtitle);
-			$scope.albums.push(newAlbum);
-		});
+    console.log(data[0].albums.length)
+    if(data[0].albums.length > 0){
+      $scope.albums = [];
+		  $.each(data[0].albums, function(idx){
+  			var d = data[0].albums[idx];
+  			var newAlbum = new NotifyAlbum(d.artist, d.albumtitle);
+  			$scope.albums.push(newAlbum);
+		  });
 		$scope.refresh();
+    }
+    
+    $scope.loading = false;
+    $scope.$apply();
 	 });
   }
   

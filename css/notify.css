@@ -6,7 +6,9 @@ td.openlink {
 	min-width: 30px; 
 }
 
-
+.table td{
+  vertical-align: middle;
+}
 
 a.albumurl-true {
 	display: block;
